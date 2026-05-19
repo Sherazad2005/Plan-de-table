@@ -1,0 +1,9 @@
+{
+  "name": "plan-de-table-mariage",
+  "version": "1.0.0",
+  "description": "Site plan de table mariage",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {}
+}
