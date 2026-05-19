@@ -15,7 +15,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Plan de table · Mariage</title>
+  <title>Plan de table · Mariage David &amp; Basma</title>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💕</text></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -387,7 +387,6 @@
   <span class="hero-orn">❧</span>
   <h1>Mariage de<br><em id="h-maries">[ Prénom &amp; Prénom ]</em></h1>
   <p class="hero-date" id="h-date">[ Date du mariage ]</p>
-  <p class="hero-lieu" id="h-lieu">[ Lieu du mariage ]</p>
   <div class="divider">💍</div>
 </header>
 
@@ -446,9 +445,8 @@
    CONFIGURATION — à modifier ici
    ============================================================ */
 const CONFIG = {
-  maries: "[ Prénom ] & [ Prénom ]",  // ex: "Basma & David"
-  date:   "[ Date du mariage ]",       // ex: "Samedi 14 juin 2025"
-  lieu:   "[ Lieu du mariage ]",       // ex: "Salle des Roses, Paris"
+  maries: "David & Basma",
+  date:   "Samedi 23 mai 2026",
 };
 
 /* ============================================================
@@ -593,7 +591,6 @@ function guestsOf(t) {
   document.getElementById('nav-brand').textContent = `✦ ${CONFIG.maries}`;
   document.getElementById('h-maries').textContent  = CONFIG.maries;
   document.getElementById('h-date').textContent    = CONFIG.date;
-  document.getElementById('h-lieu').textContent    = CONFIG.lieu;
   document.getElementById('footer').innerHTML =
     `<span class="f-hearts">♥ ♥ ♥</span>Avec tout notre amour · ${CONFIG.maries}`;
 })();
