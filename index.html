@@ -187,46 +187,44 @@
     /* ── PLAN ── */
     .floor-wrap {
       background: var(--beige-l); border-radius: 20px;
-      padding: 1.5rem; overflow-x: auto; -webkit-overflow-scrolling: touch;
+      padding: 1.5rem 1rem; overflow-x: auto; -webkit-overflow-scrolling: touch;
     }
+    /* Layout fidèle au plan réel :
+       Table d'honneur en haut (pleine largeur)
+       Tables 1-5 colonne gauche · Tables 6-10 colonne droite */
     .floor-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr 1fr 1fr;
+      grid-template-columns: 80px 1fr 80px;
+      grid-template-rows: auto repeat(5, 1fr);
       grid-template-areas:
-        "hon   hon   hon   hon"
-        "t1    t2    t3    t4"
-        "t5    danse danse t6"
-        "t7    t8    t9    t10";
-      gap: 1.15rem;
+        "hon  hon  hon"
+        "t1   mid  t6"
+        "t2   mid  t7"
+        "t3   mid  t8"
+        "t4   mid  t9"
+        "t5   mid  t10";
+      gap: .85rem 0;
       align-items: center;
       justify-items: center;
-      min-width: 280px;
+      min-width: 260px;
     }
-    @media (max-width: 480px) {
+    @media (max-width: 420px) {
       .floor-grid {
-        grid-template-columns: 1fr 1fr;
-        grid-template-areas:
-          "hon   hon"
-          "t1    t2"
-          "t3    t4"
-          "t5    t6"
-          "danse danse"
-          "t7    t8"
-          "t9    t10";
+        grid-template-columns: 68px 1fr 68px;
       }
     }
-    .ga-hon   { grid-area: hon;   width: 100%; }
-    .ga-t1    { grid-area: t1;    }
-    .ga-t2    { grid-area: t2;    }
-    .ga-t3    { grid-area: t3;    }
-    .ga-t4    { grid-area: t4;    }
-    .ga-t5    { grid-area: t5;    }
-    .ga-t6    { grid-area: t6;    }
-    .ga-t7    { grid-area: t7;    }
-    .ga-t8    { grid-area: t8;    }
-    .ga-t9    { grid-area: t9;    }
-    .ga-t10   { grid-area: t10;   }
-    .ga-danse { grid-area: danse; width: 100%; }
+    .ga-hon  { grid-area: hon; width: 100%; }
+    .ga-mid  { grid-area: mid; width: 100%; height: 100%; }
+    .ga-t1   { grid-area: t1;  }
+    .ga-t2   { grid-area: t2;  }
+    .ga-t3   { grid-area: t3;  }
+    .ga-t4   { grid-area: t4;  }
+    .ga-t5   { grid-area: t5;  }
+    .ga-t6   { grid-area: t6;  }
+    .ga-t7   { grid-area: t7;  }
+    .ga-t8   { grid-area: t8;  }
+    .ga-t9   { grid-area: t9;  }
+    .ga-t10  { grid-area: t10; }
 
     .honneur-table {
       padding: .85rem 1rem;
@@ -245,12 +243,13 @@
       font-size: .95rem; font-weight: 700; color: var(--or-d); letter-spacing: .07em;
     }
     .dance-floor {
-      padding: 1.2rem .5rem;
+      width: 100%; height: 100%;
       display: flex; align-items: center; justify-content: center;
-      background: rgba(201,169,110,.07);
+      background: rgba(201,169,110,.06);
       border: 1.5px dashed var(--or-l); border-radius: 14px;
-      font-size: .67rem; letter-spacing: .12em; text-transform: uppercase;
-      color: var(--or); font-weight: 600;
+      font-size: .63rem; letter-spacing: .12em; text-transform: uppercase;
+      color: var(--or); font-weight: 600; padding: .5rem;
+      text-align: center;
     }
     .t-circle {
       display: flex; flex-direction: column; align-items: center;
@@ -410,15 +409,19 @@
   <p class="sec-sub">Touchez une table pour voir les invités</p>
   <div class="floor-wrap">
     <div class="floor-grid">
+      <!-- Table d'honneur — pleine largeur en haut -->
       <div class="ga-hon honneur-table" onclick="openPopup(this,'honneur')">
         <span>★ &nbsp; Table d'honneur &nbsp; ★</span>
       </div>
+      <!-- Colonne gauche : Tables 1 → 5 -->
       <div class="ga-t1  t-circle" onclick="openPopup(this,1)"><div class="t-disc">1</div><span class="t-lbl">Table 1</span></div>
       <div class="ga-t2  t-circle" onclick="openPopup(this,2)"><div class="t-disc">2</div><span class="t-lbl">Table 2</span></div>
       <div class="ga-t3  t-circle" onclick="openPopup(this,3)"><div class="t-disc">3</div><span class="t-lbl">Table 3</span></div>
       <div class="ga-t4  t-circle" onclick="openPopup(this,4)"><div class="t-disc">4</div><span class="t-lbl">Table 4</span></div>
       <div class="ga-t5  t-circle" onclick="openPopup(this,5)"><div class="t-disc">5</div><span class="t-lbl">Table 5</span></div>
-      <div class="ga-danse dance-floor">✦ &nbsp; Piste de danse &nbsp; ✦</div>
+      <!-- Centre -->
+      <div class="ga-mid dance-floor">✦<br>Piste<br>de danse<br>✦</div>
+      <!-- Colonne droite : Tables 6 → 10 -->
       <div class="ga-t6  t-circle" onclick="openPopup(this,6)"><div class="t-disc">6</div><span class="t-lbl">Table 6</span></div>
       <div class="ga-t7  t-circle" onclick="openPopup(this,7)"><div class="t-disc">7</div><span class="t-lbl">Table 7</span></div>
       <div class="ga-t8  t-circle" onclick="openPopup(this,8)"><div class="t-disc">8</div><span class="t-lbl">Table 8</span></div>
@@ -450,7 +453,7 @@ const CONFIG = {
 };
 
 /* ============================================================
-   LISTE DES INVITÉS — source : Plan de table PDF
+   LISTE DES INVITÉS — source : Plan de table Excel (version corrigée)
    ============================================================ */
 const INVITES = [
   // Table d'honneur
@@ -474,102 +477,102 @@ const INVITES = [
   { nom: "Stéphanie",   table: 1 },
   { nom: "Stephania",   table: 1 },
   // Table 2
-  { nom: "Nico",    table: 2 },
-  { nom: "Jelyssa", table: 2 },
-  { nom: "Maiky",   table: 2 },
-  { nom: "Melody",  table: 2 },
-  { nom: "Melinda", table: 2 },
-  { nom: "Chloé",   table: 2 },
-  { nom: "Lonceny", table: 2 },
-  { nom: "Karène",  table: 2 },
-  { nom: "Mounir",  table: 2 },
+  { nom: "Maman Shams",          table: 2 },
+  { nom: "Copine Maman Shams 1", table: 2 },
+  { nom: "Copine Maman Shams 2", table: 2 },
+  { nom: "Maman Moudjib",        table: 2 },
+  { nom: "Maman Tasnim",         table: 2 },
+  { nom: "Mouni",                table: 2 },
+  { nom: "Indjad",               table: 2 },
+  { nom: "Faila",                table: 2 },
+  { nom: "Ilaina",               table: 2 },
+  { nom: "Fadia",                table: 2 },
   // Table 3
-  { nom: "Massi",          table: 3 },
-  { nom: "Antony",         table: 3 },
-  { nom: "Kevin",          table: 3 },
-  { nom: "Enfant Kevin 1", table: 3 },
-  { nom: "Enfant Kevin 2", table: 3 },
-  { nom: "Maxence",        table: 3 },
-  { nom: "Elodie",         table: 3 },
-  { nom: "Toihir",         table: 3 },
-  { nom: "Amal",           table: 3 },
+  { nom: "Nico",    table: 3 },
+  { nom: "Jelyssa", table: 3 },
+  { nom: "Maiky",   table: 3 },
+  { nom: "Melody",  table: 3 },
+  { nom: "Melinda", table: 3 },
+  { nom: "Chloé",   table: 3 },
+  { nom: "Lonceny", table: 3 },
+  { nom: "Karène",  table: 3 },
+  { nom: "Mounir",  table: 3 },
   // Table 4
-  { nom: "Maman",            table: 4 },
-  { nom: "Maman Naida",      table: 4 },
-  { nom: "Maman Naïla",      table: 4 },
-  { nom: "Zaou",             table: 4 },
-  { nom: "Rayan",            table: 4 },
-  { nom: "Fatou",            table: 4 },
-  { nom: "Mari Fatou",       table: 4 },
-  { nom: "Madame Zilé",      table: 4 },
-  { nom: "Zainaba Chaeyeha", table: 4 },
-  { nom: "Maman Mourad",     table: 4 },
+  { nom: "Massi",          table: 4 },
+  { nom: "Antony",         table: 4 },
+  { nom: "Kevin",          table: 4 },
+  { nom: "Enfant Kevin 1", table: 4 },
+  { nom: "Enfant Kevin 2", table: 4 },
+  { nom: "Maxence",        table: 4 },
+  { nom: "Elodie",         table: 4 },
+  { nom: "Toihir",         table: 4 },
+  { nom: "Amal",           table: 4 },
   // Table 5
-  { nom: "Papa",       table: 5 },
-  { nom: "Bazir",      table: 5 },
-  { nom: "Shera",      table: 5 },
-  { nom: "Nasri",      table: 5 },
-  { nom: "Nasser",     table: 5 },
-  { nom: "Fadi",       table: 5 },
-  { nom: "Imany",      table: 5 },
-  { nom: "Idriss",     table: 5 },
-  { nom: "Tonton Ali", table: 5 },
-  { nom: "Idriss",     table: 5 },
+  { nom: "Shakib",            table: 5 },
+  { nom: "Fils Maman Mourad", table: 5 },
+  { nom: "Glawdys",           table: 5 },
+  { nom: "Moussmick",         table: 5 },
+  { nom: "Nicole",            table: 5 },
+  { nom: "Dickson",           table: 5 },
+  { nom: "Mahmadou",          table: 5 },
+  { nom: "Elisa",             table: 5 },
+  { nom: "Mick",              table: 5 },
+  { nom: "Kay",               table: 5 },
   // Table 6
-  { nom: "Ali Zaou", table: 6 },
-  { nom: "Rania",    table: 6 },
-  { nom: "Alkaim",   table: 6 },
-  { nom: "Faidine",  table: 6 },
-  { nom: "Chams",    table: 6 },
-  { nom: "Tasnim",   table: 6 },
-  { nom: "Icham",    table: 6 },
-  { nom: "Fadela",   table: 6 },
-  { nom: "Farza",    table: 6 },
-  { nom: "Souraya",  table: 6 },
+  { nom: "Papa",       table: 6 },
+  { nom: "Bazir",      table: 6 },
+  { nom: "Shera",      table: 6 },
+  { nom: "Nasri",      table: 6 },
+  { nom: "Nasser",     table: 6 },
+  { nom: "Fadi",       table: 6 },
+  { nom: "Imany",      table: 6 },
+  { nom: "Idriss",     table: 6 },
+  { nom: "Tonton Ali", table: 6 },
+  { nom: "Idriss",     table: 6 },
   // Table 7
-  { nom: "Shakib",            table: 7 },
-  { nom: "Fils Maman Mourad", table: 7 },
-  { nom: "Glawdys",           table: 7 },
-  { nom: "Moussmick",         table: 7 },
-  { nom: "Nicole",            table: 7 },
-  { nom: "Dickson",           table: 7 },
-  { nom: "Mahmadou",          table: 7 },
-  { nom: "Elisa",             table: 7 },
-  { nom: "Mick",              table: 7 },
-  { nom: "Kay",               table: 7 },
+  { nom: "Maman",            table: 7 },
+  { nom: "Maman Naida",      table: 7 },
+  { nom: "Maman Naïla",      table: 7 },
+  { nom: "Zaou",             table: 7 },
+  { nom: "Rayan",            table: 7 },
+  { nom: "Fatou",            table: 7 },
+  { nom: "Mari Fatou",       table: 7 },
+  { nom: "Madame Zilé",      table: 7 },
+  { nom: "Zainaba Chaeyeha", table: 7 },
+  { nom: "Maman Mourad",     table: 7 },
   // Table 8
-  { nom: "Steph",         table: 8 },
-  { nom: "Erika",         table: 8 },
-  { nom: "Yannik",        table: 8 },
-  { nom: "Severine",      table: 8 },
-  { nom: "Samanta",       table: 8 },
-  { nom: "Christina",     table: 8 },
-  { nom: "Naima",         table: 8 },
-  { nom: "Sany",          table: 8 },
-  { nom: "Maman Djamila", table: 8 },
-  { nom: "Jamila",        table: 8 },
+  { nom: "Ali Zaou", table: 8 },
+  { nom: "Rania",    table: 8 },
+  { nom: "Alkaim",   table: 8 },
+  { nom: "Faidine",  table: 8 },
+  { nom: "Chams",    table: 8 },
+  { nom: "Tasnim",   table: 8 },
+  { nom: "Icham",    table: 8 },
+  { nom: "Fadela",   table: 8 },
+  { nom: "Farza",    table: 8 },
+  { nom: "Souraya",  table: 8 },
   // Table 9
-  { nom: "Maman Shams",         table: 9 },
-  { nom: "Copine Maman Shams 1",table: 9 },
-  { nom: "Copine Maman Shams 2",table: 9 },
-  { nom: "Maman Moudjib",       table: 9 },
-  { nom: "Maman Tasnim",        table: 9 },
-  { nom: "Mouni",               table: 9 },
-  { nom: "Indjad",              table: 9 },
-  { nom: "Faila",               table: 9 },
-  { nom: "Ilaina",              table: 9 },
-  { nom: "Fadia",               table: 9 },
+  { nom: "Amani",             table: 9 },
+  { nom: "Mounia",            table: 9 },
+  { nom: "Andjouza",          table: 9 },
+  { nom: "Arfata",            table: 9 },
+  { nom: "Amir",              table: 9 },
+  { nom: "Miryam Femme Amir", table: 9 },
+  { nom: "Naida",             table: 9 },
+  { nom: "Bilal",             table: 9 },
+  { nom: "Chaina",            table: 9 },
+  { nom: "Moudjib",           table: 9 },
   // Table 10
-  { nom: "Amani",             table: 10 },
-  { nom: "Mounia",            table: 10 },
-  { nom: "Andjouza",          table: 10 },
-  { nom: "Arfata",            table: 10 },
-  { nom: "Amir",              table: 10 },
-  { nom: "Miryam Femme Amir", table: 10 },
-  { nom: "Naida",             table: 10 },
-  { nom: "Bilal",             table: 10 },
-  { nom: "Chaina",            table: 10 },
-  { nom: "Moudjib",           table: 10 },
+  { nom: "Steph",         table: 10 },
+  { nom: "Erika",         table: 10 },
+  { nom: "Yannik",        table: 10 },
+  { nom: "Severine",      table: 10 },
+  { nom: "Samanta",       table: 10 },
+  { nom: "Christina",     table: 10 },
+  { nom: "Naima",         table: 10 },
+  { nom: "Sany",          table: 10 },
+  { nom: "Maman Djamila", table: 10 },
+  { nom: "Jamila",        table: 10 },
 ];
 
 /* ── Helpers ── */
