@@ -78,6 +78,9 @@
     .nav-links a:hover, .nav-links a.active {
       background: var(--rose-l); color: var(--rose-d);
     }
+    @media (max-width: 400px) {
+      .nav-links a span { display: none; }
+    }
 
     /* ── HERO ── */
     .hero {
@@ -346,6 +349,67 @@
     .tc-body ul li::before { content: '✦'; color: var(--rose); font-size: .55rem; flex-shrink: 0; }
     .tc-body ul li:last-child { border-bottom: none; }
 
+    /* ── INFOS CÉRÉMONIE ── */
+    .infos-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+      align-items: start;
+    }
+    @media (max-width: 600px) {
+      .infos-grid { grid-template-columns: 1fr; }
+    }
+    .info-card {
+      background: var(--blanc); border: 1.5px solid var(--beige);
+      border-radius: 18px; padding: 1.5rem 1.35rem;
+      box-shadow: 0 2px 12px var(--sh);
+    }
+    .info-card-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem; font-weight: 700;
+      color: var(--txt); margin-bottom: 1rem;
+      display: flex; align-items: center; gap: .5rem;
+    }
+    .info-card-title .ic-orn {
+      font-size: 1.2rem;
+    }
+    .info-time {
+      display: flex; flex-direction: column; gap: .75rem;
+    }
+    .time-row {
+      display: flex; align-items: flex-start; gap: .75rem;
+      padding: .65rem .85rem;
+      background: var(--beige-l); border-radius: 12px;
+      border-left: 3px solid var(--or);
+    }
+    .time-badge {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem; font-weight: 700;
+      color: var(--or-d); white-space: nowrap; flex-shrink: 0;
+    }
+    .time-desc { font-size: .83rem; color: var(--txt-l); line-height: 1.5; }
+    .time-desc strong { color: var(--txt); font-weight: 600; }
+    .map-wrap {
+      border-radius: 14px; overflow: hidden;
+      border: 1.5px solid var(--beige);
+      box-shadow: 0 2px 10px var(--sh);
+    }
+    .map-wrap iframe {
+      display: block; width: 100%; height: 280px; border: none;
+    }
+    .map-legend {
+      display: flex; align-items: center; gap: .5rem;
+      padding: .6rem .85rem;
+      background: var(--beige-l);
+      font-size: .75rem; color: var(--txt-l);
+    }
+    .map-legend .p-badge {
+      background: #5BC8F5; color: #fff;
+      font-weight: 700; font-size: .72rem;
+      padding: .15rem .45rem; border-radius: 20px;
+      flex-shrink: 0;
+    }
+
     /* ── FOOTER ── */
     footer {
       text-align: center; padding: 2.5rem 1rem; margin-top: 1rem;
@@ -374,9 +438,10 @@
   <div class="nav-inner">
     <a href="#recherche" class="nav-brand" id="nav-brand">✦ Mariage</a>
     <ul class="nav-links">
-      <li><a href="#recherche" id="nl-r">🔍 Recherche</a></li>
-      <li><a href="#plan"      id="nl-p">🗺 Plan</a></li>
-      <li><a href="#tables"   id="nl-t">📋 Tables</a></li>
+      <li><a href="#recherche" id="nl-r">🔍 <span>Recherche</span></a></li>
+      <li><a href="#infos"     id="nl-i">📍 <span>Infos</span></a></li>
+      <li><a href="#plan"      id="nl-p">🗺 <span>Plan</span></a></li>
+      <li><a href="#tables"   id="nl-t">📋 <span>Tables</span></a></li>
     </ul>
   </div>
 </nav>
@@ -388,6 +453,48 @@
   <p class="hero-date" id="h-date">[ Date du mariage ]</p>
   <div class="divider">💍</div>
 </header>
+
+<!-- ── INFOS CÉRÉMONIE ── -->
+<section id="infos">
+  <h2 class="sec-title">Informations pratiques</h2>
+  <p class="sec-sub">Cérémonie civile · Mairie de Livry-Gargan</p>
+  <div class="infos-grid">
+
+    <!-- Horaires -->
+    <div class="info-card">
+      <p class="info-card-title"><span class="ic-orn">🕑</span> Horaires</p>
+      <div class="info-time">
+        <div class="time-row">
+          <span class="time-badge">13h30</span>
+          <span class="time-desc">Accueil des invités — <strong>merci d'arriver à partir de 13h30</strong> afin que chacun soit installé avant le début de la cérémonie.</span>
+        </div>
+        <div class="time-row">
+          <span class="time-badge">14h00</span>
+          <span class="time-desc"><strong>Début de la cérémonie civile</strong> — la cérémonie débutera à <strong>14h précises</strong>.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Carte & stationnement -->
+    <div class="info-card">
+      <p class="info-card-title"><span class="ic-orn">🅿️</span> Stationnement</p>
+      <div class="map-wrap">
+        <iframe
+          src="https://www.openstreetmap.org/export/embed.html?bbox=2.5240%2C48.9085%2C2.5410%2C48.9165&layer=mapnik&marker=48.9122%2C2.5321"
+          title="Carte Mairie de Livry-Gargan"
+          loading="lazy"
+          referrerpolicy="no-referrer">
+        </iframe>
+        <div class="map-legend">
+          <span class="p-badge">P</span>
+          Deux parkings gratuits disponibles autour du Parc de la Mairie
+          · <a href="https://maps.google.com/?q=Mairie+de+Livry-Gargan" target="_blank" rel="noopener" style="color:var(--or-d);font-weight:600;">Ouvrir dans Maps ↗</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
 
 <!-- ── RECHERCHE ── -->
 <section id="recherche">
@@ -773,7 +880,7 @@ function launchConfetti() {
    NAV ACTIVE AU SCROLL
    ============================================================ */
 const secs = document.querySelectorAll('section[id]');
-const nls  = { 'nl-r':'recherche', 'nl-p':'plan', 'nl-t':'tables' };
+const nls  = { 'nl-r':'recherche', 'nl-i':'infos', 'nl-p':'plan', 'nl-t':'tables' };
 window.addEventListener('scroll', () => {
   const y = window.scrollY + 70;
   let cur = 'recherche';
