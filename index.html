@@ -460,9 +460,9 @@
   <p class="sec-sub">Cérémonie civile · Mairie de Livry-Gargan</p>
   <div class="infos-grid">
 
-    <!-- Horaires -->
+    <!-- Horaires cérémonie civile -->
     <div class="info-card">
-      <p class="info-card-title"><span class="ic-orn">🕑</span> Horaires</p>
+      <p class="info-card-title"><span class="ic-orn">🕑</span> Cérémonie civile</p>
       <div class="info-time">
         <div class="time-row">
           <span class="time-badge">13h30</span>
@@ -475,15 +475,40 @@
       </div>
     </div>
 
-    <!-- Carte & stationnement -->
+    <!-- Parking mairie -->
     <div class="info-card">
-      <p class="info-card-title"><span class="ic-orn">🅿️</span> Stationnement</p>
+      <p class="info-card-title"><span class="ic-orn">🏛️</span> Mairie de Livry-Gargan</p>
       <div class="map-wrap">
         <img src="parking-mairie.png" alt="Plan de stationnement — Mairie de Livry-Gargan" style="width:100%;display:block;border-radius:14px 14px 0 0;">
         <div class="map-legend">
           <span class="p-badge">P</span>
           Deux parkings disponibles autour du Parc de la Mairie
           · <a href="https://maps.google.com/?q=Mairie+de+Livry-Gargan" target="_blank" rel="noopener" style="color:var(--or-d);font-weight:600;">Ouvrir dans Maps ↗</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Lieu de la fête -->
+    <div class="info-card" style="grid-column: 1 / -1;">
+      <p class="info-card-title"><span class="ic-orn">🎉</span> Lieu de la fête</p>
+      <div class="info-time" style="margin-bottom:1rem;">
+        <div class="time-row">
+          <span class="time-badge" style="font-size:.85rem;">📍</span>
+          <span class="time-desc"><strong>14 rue du Clos du Marronnier<br>77220 Favières</strong></span>
+        </div>
+      </div>
+      <div class="map-wrap">
+        <iframe
+          src="https://maps.google.com/maps?q=14+rue+du+clos+du+marronnier+77220+Favieres+France&output=embed&z=16"
+          title="Lieu de la fête — Favières"
+          loading="lazy"
+          referrerpolicy="no-referrer"
+          style="height:300px;">
+        </iframe>
+        <div class="map-legend">
+          <span class="p-badge" style="background:#E8777C;">🎉</span>
+          14 rue du Clos du Marronnier, 77220 Favières
+          · <a href="https://maps.google.com/?q=14+rue+du+clos+du+marronnier+77220+Favieres" target="_blank" rel="noopener" style="color:var(--or-d);font-weight:600;">Ouvrir dans Maps ↗</a>
         </div>
       </div>
     </div>
@@ -555,7 +580,7 @@ const CONFIG = {
 };
 
 /* ============================================================
-   LISTE DES INVITÉS — source : Plan de table Excel (version corrigée)
+   LISTE DES INVITÉS — source : Plan de table PDF version 3
    ============================================================ */
 const INVITES = [
   // Table d'honneur
@@ -579,69 +604,71 @@ const INVITES = [
   { nom: "Stéphanie",   table: 1 },
   { nom: "Stephania",   table: 1 },
   // Table 2
-  { nom: "Maman Shams",          table: 2 },
-  { nom: "Copine Maman Shams 1", table: 2 },
-  { nom: "Copine Maman Shams 2", table: 2 },
-  { nom: "Maman Moudjib",        table: 2 },
-  { nom: "Maman Tasnim",         table: 2 },
-  { nom: "Mouni",                table: 2 },
-  { nom: "Indjad",               table: 2 },
-  { nom: "Faila",                table: 2 },
-  { nom: "Ilaina",               table: 2 },
-  { nom: "Fadia",                table: 2 },
+  { nom: "Maman Shams",        table: 2 },
+  { nom: "Copine Maman Shams", table: 2 },
+  { nom: "Papa Moujib",        table: 2 },
+  { nom: "Shakib",             table: 2 },
+  { nom: "Maman Tasnim",       table: 2 },
+  { nom: "Mouni",              table: 2 },
+  { nom: "Injad",              table: 2 },
+  { nom: "Faila",              table: 2 },
+  { nom: "Ilaina",             table: 2 },
+  { nom: "Fadia",              table: 2 },
   // Table 3
-  { nom: "Nico",    table: 3 },
-  { nom: "Jelyssa", table: 3 },
-  { nom: "Maiky",   table: 3 },
-  { nom: "Melody",  table: 3 },
-  { nom: "Melinda", table: 3 },
-  { nom: "Chloé",   table: 3 },
-  { nom: "Lonceny", table: 3 },
-  { nom: "Karène",  table: 3 },
-  { nom: "Mounir",  table: 3 },
+  { nom: "Nico",             table: 3 },
+  { nom: "Jelyssa",          table: 3 },
+  { nom: "Maiky",            table: 3 },
+  { nom: "Melody",           table: 3 },
+  { nom: "Melinda",          table: 3 },
+  { nom: "Chloé",            table: 3 },
+  { nom: "Lonceny",          table: 3 },
+  { nom: "Karène",           table: 3 },
+  { nom: "Mounir",           table: 3 },
+  { nom: "Fils Maman Mourad",table: 3 },
   // Table 4
-  { nom: "Massi",          table: 4 },
-  { nom: "Antony",         table: 4 },
-  { nom: "Kevin",          table: 4 },
-  { nom: "Enfant Kevin 1", table: 4 },
-  { nom: "Enfant Kevin 2", table: 4 },
-  { nom: "Maxence",        table: 4 },
-  { nom: "Elodie",         table: 4 },
-  { nom: "Toihir",         table: 4 },
-  { nom: "Amal",           table: 4 },
+  { nom: "Massi",       table: 4 },
+  { nom: "Antony",      table: 4 },
+  { nom: "Kevin",       table: 4 },
+  { nom: "Toihir",      table: 4 },
+  { nom: "Amal",        table: 4 },
+  { nom: "Maxence",     table: 4 },
+  { nom: "Elodie",      table: 4 },
+  { nom: "Maman Jamila",table: 4 },
+  { nom: "Jamila",      table: 4 },
+  { nom: "Dora",        table: 4 },
   // Table 5
-  { nom: "Shakib",            table: 5 },
-  { nom: "Fils Maman Mourad", table: 5 },
-  { nom: "Glawdys",           table: 5 },
-  { nom: "Moussmick",         table: 5 },
-  { nom: "Nicole",            table: 5 },
-  { nom: "Dixon",             table: 5 },
-  { nom: "Mahmadou",          table: 5 },
-  { nom: "Elisa",             table: 5 },
-  { nom: "Mick",              table: 5 },
-  { nom: "Kay",               table: 5 },
+  { nom: "Glawdys",   table: 5 },
+  { nom: "Aaliyah",   table: 5 },
+  { nom: "Dixon",     table: 5 },
+  { nom: "Moussmick", table: 5 },
+  { nom: "Nicole",    table: 5 },
+  { nom: "Elio",      table: 5 },
+  { nom: "Mahmadou",  table: 5 },
+  { nom: "Elisa",     table: 5 },
+  { nom: "Mick",      table: 5 },
+  { nom: "Kay",       table: 5 },
   // Table 6
-  { nom: "Papa",       table: 6 },
-  { nom: "Bazir",      table: 6 },
-  { nom: "Shera",      table: 6 },
-  { nom: "Nasri",      table: 6 },
-  { nom: "Nasser",     table: 6 },
-  { nom: "Fadi",       table: 6 },
-  { nom: "Imany",      table: 6 },
-  { nom: "Idriss",     table: 6 },
-  { nom: "Tonton Ali",           table: 6 },
-  { nom: "Idriss fils Tonton Ali", table: 6 },
+  { nom: "Papa",         table: 6 },
+  { nom: "Bazir",        table: 6 },
+  { nom: "Shera",        table: 6 },
+  { nom: "Nasri",        table: 6 },
+  { nom: "Nasser",       table: 6 },
+  { nom: "Fadi",         table: 6 },
+  { nom: "Imany",        table: 6 },
+  { nom: "Idriss",       table: 6 },
+  { nom: "Tonton Ali",   table: 6 },
+  { nom: "Idriss Chanfi",table: 6 },
   // Table 7
-  { nom: "Maman",            table: 7 },
-  { nom: "Maman Naida",      table: 7 },
-  { nom: "Maman Naïla",      table: 7 },
-  { nom: "Zaou",             table: 7 },
-  { nom: "Rayan",            table: 7 },
-  { nom: "Fatou",            table: 7 },
-  { nom: "Mari Fatou",       table: 7 },
-  { nom: "Madame Zilé",      table: 7 },
-  { nom: "Zainaba Chaeyeha", table: 7 },
-  { nom: "Maman Mourad",     table: 7 },
+  { nom: "Maman",       table: 7 },
+  { nom: "Maman Naida", table: 7 },
+  { nom: "Maman Naïla", table: 7 },
+  { nom: "Zaou",        table: 7 },
+  { nom: "Rayan",       table: 7 },
+  { nom: "Fatou",       table: 7 },
+  { nom: "Mari Fatou",  table: 7 },
+  { nom: "Madame Zilé", table: 7 },
+  { nom: "Zainaba",     table: 7 },
+  { nom: "Maman Chaïna",table: 7 },
   // Table 8
   { nom: "Ali Zaou", table: 8 },
   { nom: "Rania",    table: 8 },
@@ -665,16 +692,14 @@ const INVITES = [
   { nom: "Chaina",            table: 9 },
   { nom: "Moudjib",           table: 9 },
   // Table 10
-  { nom: "Steph",         table: 10 },
-  { nom: "Erika",         table: 10 },
-  { nom: "Yannik",        table: 10 },
-  { nom: "Severine",      table: 10 },
-  { nom: "Samanta",       table: 10 },
-  { nom: "Christina",     table: 10 },
-  { nom: "Naima",         table: 10 },
-  { nom: "Sany",          table: 10 },
-  { nom: "Maman Djamila", table: 10 },
-  { nom: "Jamila",        table: 10 },
+  { nom: "Steph",    table: 10 },
+  { nom: "Erika",    table: 10 },
+  { nom: "Yannik",   table: 10 },
+  { nom: "Severine", table: 10 },
+  { nom: "Samanta",  table: 10 },
+  { nom: "Christina",table: 10 },
+  { nom: "Naima",    table: 10 },
+  { nom: "Sany",     table: 10 },
 ];
 
 /* ── Helpers ── */
